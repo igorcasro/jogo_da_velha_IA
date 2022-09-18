@@ -166,7 +166,6 @@ void preencheMatrizLivres(char matriz[3][3], int livres[2][9]){
 }
 
 void preenchimentoOInicial(char matriz[3][3]){
-    printf("preenchimentoOInicial\n");
     int i, j;
     int linha, coluna;
     for(i = 0; i < 3; i++){
@@ -455,7 +454,7 @@ no * solucao(){
             parar = 1;
         }
 
-        if(parar == 1){
+        if(parar == 1 || execucoes == 9){
             return final;
         }
 
@@ -464,7 +463,6 @@ no * solucao(){
         } else {
             jogador--;
         }
-
     }    
     
     return final;
@@ -475,11 +473,14 @@ void main(){
 
     finalizado = solucao();
     // imprime(finalizado->posicoes);
-    if(jogador == 0){
-        printf("O jogador do X venceu! Parabens\n");
-    } else if(jogador == 1){
-        printf("O jogador da O venceu! Parabens\n");
-    } else {
+    if(parar == 1){
+        if(jogador == 0){
+            printf("O jogador do X venceu! Parabens\n");
+        } else if(jogador == 1){
+            printf("O jogador da O venceu! Parabens\n");
+        } 
+    }
+    if (parar != 1) {
         printf("Deu velha! :/\n");
     }
 }
